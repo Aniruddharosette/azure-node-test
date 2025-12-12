@@ -9,6 +9,12 @@ const server = http.createServer((req, res) => {
   res.end('Hello from Azure App Service! 11111111');
 });
 
-server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// ONLY listen if this file is run directly (not via test)
+if (require.main === module) {
+  server.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
+}
+
+// Export the server so the test file can "see" it
+module.exports = server;
