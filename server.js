@@ -5,8 +5,10 @@ const port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
+  // ADD THIS LINE: Tells the browser "Do not save this file, always ask me for a new one"
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello from Azure App Service! 33333');
+  res.end('Hello from Azure App Service! 44444');
 });
 
 // ONLY listen if this file is run directly (not via test)
